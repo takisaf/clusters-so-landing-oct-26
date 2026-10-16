@@ -61,7 +61,7 @@ Budget: under 100 KB total, LCP under 1.2 s on 4G, CLS 0.
     - offer (USD), name, email, and optional intended use;
     - three ways to send: a prefilled `mailto:` (subject "Offer for Clusters.so — $X"), a Gmail link, or Copy.
     - It stays fully static.
-13. **Trust row** in the footer, replacing "Acquisition enquiries". It shows only facts the owner confirms (see open questions): escrow, price on request or minimum offer, reply time.
+13. ~~Trust row~~ — dropped. No price, transfer method or reply time on the page; the footer just says "Open to offers".
 14. **Theme balance.** A `--tld` token per theme, so ".so" carries the same weight in light and dark (dark `#8C918C`, 5.22:1).
 15. **Button details.**
     - Compensate for the trailing tracking on the button and footer caps.
@@ -86,11 +86,11 @@ Budget: under 100 KB total, LCP under 1.2 s on 4G, CLS 0.
 - With JS disabled, email and mailto links still work.
 - Lighthouse: Performance, Accessibility, Best Practices and SEO all ≥ 95.
 
-## Open questions for the owner
+## Decisions (owner, Oct 2026)
 
-- Is the contact address still `hello@clusters.so`?
-- Is there a minimum offer or asking price to state, or just "price on request"?
-- Transfer and payment: Escrow.com, or something else (Dan, Sedo, direct)?
-- What reply time can we commit to (for example, one business day)?
-- Where will it be hosted: GitHub Pages, Netlify, Vercel, or Cloudflare Pages? This decides the canonical URL and the OG image URL.
-- Is Phase 3 in scope (the dot field in particular)?
+- Contact address: `hello@clusters.so`.
+- No asking price or minimum: buyers make offers. The page doesn't hint at a number (no placeholder amount in the form).
+- Escrow and marketplace listing are handled once there is a buyer, so they stay off the page.
+- No reply-time promise.
+- Hosting: Vercel (`vercel.json`); canonical and OG URLs assume `https://clusters.so/`.
+- Scope: Phases 1 and 2. Phase 3 is deferred.

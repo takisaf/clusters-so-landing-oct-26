@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Clusters.so — Domain available for acquisition</title>
+<meta name="description" content="Clusters.so is available for acquisition. Where scattered things find each other. Make an offer.">
+<link rel="canonical" href="https://clusters.so/">
+<meta name="robots" content="index,follow">
+<meta name="color-scheme" content="light dark">
+<meta name="theme-color" content="#F3F4F2" media="(prefers-color-scheme: light)">
+<meta name="theme-color" content="#1C1E1D" media="(prefers-color-scheme: dark)">
+
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Clusters.so">
+<meta property="og:url" content="https://clusters.so/">
+<meta property="og:title" content="Clusters.so — Domain available for acquisition">
+<meta property="og:description" content="Where scattered things find each other. Make an offer.">
+<meta property="og:image" content="https://clusters.so/og.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Clusters.so wordmark on a silver-grey background">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Clusters.so — Domain available for acquisition">
+<meta name="twitter:description" content="Where scattered things find each other. Make an offer.">
+<meta name="twitter:image" content="https://clusters.so/og.png">
+
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="icon" href="/favicon-32.png" type="image/png" sizes="32x32">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="preload" href="/fonts/big-shoulders-wordmark.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/big-shoulders.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/figtree.woff2" as="font" type="font/woff2" crossorigin>
+
+<script>
+  // Letters start scattered only when JS can bring them back together, and only with motion allowed.
+  (function () {
+    var root = document.documentElement;
+    root.classList.add("js");
+    if (matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    root.classList.add("scatter");
+    var go = function () { root.classList.add("gather"); };
+    var fontReady = document.fonts && document.fonts.load
+      ? document.fonts.load('900 1em "Clusters Wordmark"')
+      : Promise.resolve();
+    Promise.race([fontReady, new Promise(function (r) { setTimeout(r, 600); })]).then(go, go);
+  })();
+</script>
+
+<style>
+  /* Fonts: self-hosted subsets (see fonts/OFL-*.txt). The wordmark face holds only the glyphs of "Clusters.so"
+     and blocks briefly so the animated wordmark never swaps mid-flight; everything else swaps. */
+  @font-face {
+    font-family: "Clusters Wordmark";
+    src: url("/fonts/big-shoulders-wordmark.woff2") format("woff2");
+    font-weight: 900;
+    font-display: block;
+  }
+  @font-face {
+    font-family: "Big Shoulders Display";
+    src: url("/fonts/big-shoulders.woff2") format("woff2");
+    font-weight: 700 800;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: "Figtree";
+    src: url("/fonts/figtree.woff2") format("woff2");
+    font-weight: 400 500;
+    font-display: swap;
+  }
+
+  /* Layout: one screen, one centered column. Identity group (eyebrow, wordmark, tagline) sits above the
+     action group (offer, email row); content is centred slightly above the middle. Mint is used twice:
+     the eyebrow dot and the offer button. */
+  :root {
+    --bg: #F3F4F2;
+    --surface: #FBFBFA;
+    --fg: #232624;
+    --fg-2: #676C68;      /* 4.85:1 on --bg: tagline, eyebrow, footer */
+    --tld: #7C817D;       /* the muted ".so" — large display text only */
+    --rule: #DCDFDB;
+    --field: #828783;     /* input borders, ≥3:1 on --surface and --bg */
+    --accent: #58E8C9;
+    --accent-hover: #4CDDBD;
+    --accent-active: #42CFB0;
+    --on-accent: #0B241E;
+    --backdrop: rgb(28 30 29 / .42);
+    --display: "Big Shoulders Display", "Arial Narrow", "Helvetica Neue", Arial, sans-serif;
+    --wordmark: "Clusters Wordmark", "Big Shoulders Display", Impact, "Arial Narrow Bold", sans-serif;
+    --body: "Figtree", "Helvetica Neue", Arial, sans-serif;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #1C1E1D; --surface: #262927; --fg: #ECEEEA; --fg-2: #9DA29D; --tld: #8C918C;
+      --rule: #343836; --field: #7A7F7B; --backdrop: rgb(0 0 0 / .55); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #1C1E1D; --surface: #262927; --fg: #ECEEEA; --fg-2: #9DA29D; --tld: #8C918C;
+    --rule: #343836; --field: #7A7F7B; --backdrop: rgb(0 0 0 / .55); color-scheme: dark;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; }
+  html, body { height: 100%; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 16px/1.5 var(--body);
+    padding-inline: max(16px, env(safe-area-inset-left)) max(16px, env(safe-area-inset-right));
+    overflow-x: clip;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  .page { min-height: 100%; display: grid; grid-template-rows: 1fr auto; }
+  main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(2.75rem, 7vh, 3.75rem);
+    text-align: center;
+    padding-block: 8vh 13vh;
+  }
+
+  /* Identity group */
+  .identity { display: flex; flex-direction: column; align-items: center; }
+  .eyebrow {
+    margin: 0 0 clamp(1.25rem, 2.2vw, 1.9rem);
+    display: inline-flex; align-items: center; gap: .6rem;
+    font: 700 clamp(.8rem, .95vw, .95rem)/1 var(--display);
+    letter-spacing: .2em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+  }
+  .eyebrow > span { margin-right: -.2em; }
+  .eyebrow::before {
+    content: ""; width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+  }
+  h1 {
+    margin: 0;
+    font-family: var(--wordmark);
+    font-weight: 900;
+    font-size: clamp(3.6rem, 19vw, 12rem);
+    line-height: .85;
+    letter-spacing: .005em;
+    white-space: nowrap;
+  }
+  h1 .l { display: inline-block; }
+  h1 .tld { color: var(--tld); }
+  .tagline {
+    margin: 1.75rem 0 0;
+    font: 700 clamp(1.15rem, 2.2vw, 1.5rem)/1.3 var(--display);
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+  }
+  .tagline br { display: none; }
+  @media (max-width: 34rem) { .tagline br { display: inline; } }
+
+  /* "Gather": each letter starts a little off its place and settles in. Transform only, so nothing reflows,
+     and letters are visible from the first frame. */
+  .scatter h1 .l { transform: translate(var(--x), var(--y)) rotate(var(--r)); }
+  .gather h1 .l {
+    animation: gather 1000ms cubic-bezier(.2, .8, .2, 1) calc(var(--i) * 25ms) both;
+  }
+  @keyframes gather {
+    from { transform: translate(var(--x), var(--y)) rotate(var(--r)); }
+    to   { transform: none; }
+  }
+
+  /* Action group */
+  .actions { display: flex; flex-direction: column; align-items: center; gap: 1rem; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    min-height: 3.25rem;
+    /* Left padding carries the extra tracking that trails the last letter, so the label sits centred. */
+    padding: .9rem 2.4rem .9rem calc(2.4rem + .14em);
+    border: 0;
+    border-radius: 999px;
+    background: var(--accent);
+    color: var(--on-accent);
+    font: 800 1.05rem/1 var(--display);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform .2s ease, background-color .2s ease;
+  }
+  .btn:hover { background: var(--accent-hover); transform: translateY(-1px); }
+  .btn:active { background: var(--accent-active); transform: none; }
+
+  .contact {
+    display: flex; flex-wrap: wrap; justify-content: center; align-items: center;
+    column-gap: .35rem;
+    font-size: .9375rem;
+    color: var(--fg-2);
+  }
+  .contact .sep { padding-inline: .1rem; }
+  @media (max-width: 23rem) { .contact .sep { display: none; } }
+  .link {
+    display: inline-flex; align-items: center; gap: .35rem;
+    min-height: 44px;
+    padding: 0 .3rem;
+    border: 0; background: none;
+    font: inherit;
+    color: var(--fg);
+    text-decoration: underline;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    text-decoration-color: color-mix(in srgb, var(--fg) 35%, transparent);
+    cursor: pointer;
+    transition: text-decoration-color .2s ease;
+  }
+  .link:hover { text-decoration-color: var(--fg); }
+  .link svg { width: 1em; height: 1em; flex: none; }
+  [data-js-only] { display: none !important; }
+  .js [data-js-only] { display: inline-flex !important; }
+
+  :where(a, button, input, textarea):focus-visible {
+    outline: 2px solid var(--fg);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+  .btn:focus-visible { outline-offset: 4px; border-radius: 999px; }
+
+  footer {
+    padding-block: 1.5rem max(1.5rem, env(safe-area-inset-bottom));
+    border-top: 1px solid var(--rule);
+    display: flex; justify-content: space-between; flex-wrap: wrap; gap: .5rem 1.5rem;
+    font: 400 .75rem/1.4 var(--body);
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: var(--fg-2);
+  }
+  footer span:last-child { margin-right: -.16em; }
+
+  .sr-only {
+    position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  /* Offer dialog */
+  dialog {
+    width: min(28rem, calc(100% - 2rem));
+    max-height: calc(100dvh - 2rem);
+    padding: 0;
+    border: 1px solid var(--rule);
+    border-radius: 1.25rem;
+    background: var(--surface);
+    color: var(--fg);
+    box-shadow: 0 24px 64px -24px rgb(0 0 0 / .35);
+  }
+  dialog::backdrop { background: var(--backdrop); backdrop-filter: blur(3px); }
+  dialog[open] { animation: rise .28s cubic-bezier(.2, .8, .2, 1); }
+  dialog[open]::backdrop { animation: fade .28s ease; }
+  @keyframes rise { from { opacity: 0; transform: translateY(12px); } }
+  @keyframes fade { from { opacity: 0; } }
+  .dialog-body { padding: 1.75rem 1.5rem 1.5rem; }
+  .dialog-head { display: flex; align-items: flex-start; justify-content: space-between; gap: 1rem; }
+  .dialog-head h2 {
+    margin: 0;
+    font: 800 1.6rem/1 var(--display);
+    letter-spacing: .08em;
+    text-transform: uppercase;
+  }
+  .close {
+    display: grid; place-items: center;
+    width: 44px; height: 44px; margin: -.65rem -.65rem 0 0;
+    border: 0; border-radius: 999px; background: none; color: var(--fg-2);
+    cursor: pointer;
+  }
+  .close:hover { color: var(--fg); background: color-mix(in srgb, var(--fg) 7%, transparent); }
+  .close:focus-visible { border-radius: 999px; }
+  .close svg { width: 18px; height: 18px; }
+  .dialog-lede { margin: .6rem 0 1.5rem; font-size: .9375rem; color: var(--fg-2); }
+
+  .field { display: grid; gap: .4rem; margin-bottom: 1rem; }
+  .field label { font-size: .875rem; font-weight: 500; }
+  .field label small { font-size: inherit; font-weight: 400; color: var(--fg-2); }
+  .input {
+    width: 100%;
+    min-height: 3rem;
+    padding: .7rem .9rem;
+    border: 1px solid var(--field);
+    border-radius: .75rem;
+    background: var(--bg);
+    color: var(--fg);
+    font: 400 1rem/1.4 var(--body);   /* 16px keeps iOS from zooming on focus */
+  }
+  textarea.input { min-height: 5.5rem; resize: vertical; }
+  .input:focus-visible { outline-offset: 1px; border-radius: .75rem; border-color: var(--fg); }
+  .money { position: relative; }
+  .money .input { padding-inline: 1.9rem 3.4rem; font-weight: 500; font-variant-numeric: tabular-nums; }
+  .money::before, .money::after {
+    position: absolute; top: 50%; transform: translateY(-50%);
+    color: var(--fg-2); pointer-events: none;
+  }
+  .money::before { content: "$"; left: .95rem; }
+  .money::after { content: "USD"; right: .95rem; font-size: .8125rem; letter-spacing: .08em; }
+  .hint { margin: -.15rem 0 0; font-size: .8125rem; color: var(--fg-2); }
+  .hint:empty { display: none; }
+  .field.invalid .input { border-color: #C2412D; }
+  .field.invalid .hint { color: #B03A27; }
+  :root[data-theme="dark"] .field.invalid .hint { color: #F08A75; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .field.invalid .hint { color: #F08A75; }
+  }
+
+  .send { display: grid; gap: .6rem; margin-top: 1.5rem; }
+  .send .btn { width: 100%; }
+  .send-alt { display: flex; justify-content: center; align-items: center; gap: .25rem; font-size: .9375rem; color: var(--fg-2); }
+  .status { min-height: 1.4rem; margin: .5rem 0 0; text-align: center; font-size: .875rem; color: var(--fg-2); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .btn, .link { transition: none; }
+    dialog[open], dialog[open]::backdrop { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="page">
+  <main>
+    <div class="identity">
+      <p class="eyebrow"><span>Available for acquisition</span></p>
+      <h1 aria-label="Clusters.so"><span aria-hidden="true"><span class="l" style="--i:0;--x:-0.06em;--y:0.24em;--r:-4deg">C</span><span class="l" style="--i:1;--x:0.04em;--y:-0.2em;--r:3deg">l</span><span class="l" style="--i:2;--x:-0.03em;--y:0.28em;--r:4deg">u</span><span class="l" style="--i:3;--x:0.05em;--y:-0.14em;--r:-3deg">s</span><span class="l" style="--i:4;--x:-0.04em;--y:-0.26em;--r:4deg">t</span><span class="l" style="--i:5;--x:0.03em;--y:0.18em;--r:-3deg">e</span><span class="l" style="--i:6;--x:-0.05em;--y:0.1em;--r:3deg">r</span><span class="l" style="--i:7;--x:0.04em;--y:0.24em;--r:-4deg">s</span><span class="tld"><span class="l" style="--i:8;--x:0em;--y:-0.3em;--r:0deg">.</span><span class="l" style="--i:9;--x:0.06em;--y:0.16em;--r:4deg">s</span><span class="l" style="--i:10;--x:0.03em;--y:-0.22em;--r:-4deg">o</span></span></span></h1>
+      <p class="tagline">Where scattered things <br>find each other.</p>
+    </div>
+
+    <div class="actions">
+      <a class="btn" id="offer" href="mailto:hello@clusters.so?subject=Offer%20for%20Clusters.so">Make an offer</a>
+      <div class="contact">
+        <a class="link" href="mailto:hello@clusters.so?subject=Enquiry%20about%20Clusters.so">hello@clusters.so</a>
+        <button class="link" type="button" id="copy-email" data-js-only>
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-.5a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h.5"/></svg>
+          <span>Copy</span>
+        </button>
+        <span class="sep" aria-hidden="true">·</span>
+        <a class="link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hello@clusters.so&amp;su=Enquiry%20about%20Clusters.so" target="_blank" rel="noopener">Open in Gmail</a>
+      </div>
+      <p class="sr-only" id="announce" aria-live="polite"></p>
+    </div>
+  </main>
+
+  <footer>
+    <span>Clusters.so</span>
+    <span>Open to offers</span>
+  </footer>
+</div>
+
+<dialog id="offer-dialog" aria-labelledby="offer-title" aria-describedby="offer-lede">
+  <form class="dialog-body" id="offer-form" novalidate>
+    <div class="dialog-head">
+      <h2 id="offer-title">Make an offer</h2>
+      <button class="close" type="button" data-close aria-label="Close">
+        <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14"/></svg>
+      </button>
+    </div>
+    <p class="dialog-lede" id="offer-lede">We'll draft the email for you. Nothing is sent until you press send in your own mail.</p>
+
+    <div class="field" id="amount-field">
+      <label for="amount">Your offer</label>
+      <div class="money">
+        <input class="input" id="amount" name="amount" type="text" inputmode="numeric" autocomplete="off" required autofocus aria-describedby="amount-hint">
+      </div>
+      <p class="hint" id="amount-hint"></p>
+    </div>
+    <div class="field">
+      <label for="name">Name</label>
+      <input class="input" id="name" name="name" type="text" autocomplete="name">
+    </div>
+    <div class="field">
+      <label for="company">Company <small>(optional)</small></label>
+      <input class="input" id="company" name="company" type="text" autocomplete="organization">
+    </div>
+    <div class="field">
+      <label for="note">Anything else <small>(optional)</small></label>
+      <textarea class="input" id="note" name="note" rows="3" placeholder="Intended use, timeline, questions"></textarea>
+    </div>
+
+    <div class="send">
+      <button class="btn" type="submit" value="mail">Send from my email</button>
+      <div class="send-alt">
+        <button class="link" type="submit" value="gmail">Use Gmail</button>
+        <span aria-hidden="true">·</span>
+        <button class="link" type="submit" value="copy">Copy message</button>
+      </div>
+    </div>
+    <p class="status" id="offer-status" aria-live="polite"></p>
+  </form>
+</dialog>
+
+<script>
+  (function () {
+    var EMAIL = "hello@clusters.so";
+    var announce = document.getElementById("announce");
+    var gmailUrl = function (subject, body) {
+      return "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(EMAIL) +
+        "&su=" + encodeURIComponent(subject) + (body ? "&body=" + encodeURIComponent(body) : "");
+    };
+    var copyText = function (text) {
+      if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
+      return new Promise(function (resolve, reject) {
+        var t = document.createElement("textarea");
+        t.value = text; t.setAttribute("readonly", ""); t.style.position = "fixed"; t.style.opacity = "0";
+        document.body.appendChild(t); t.select();
+        var ok = document.execCommand("copy"); t.remove();
+        ok ? resolve() : reject();
+      });
+    };
+
+    // Copy the address, with a short "Copied" state that is also announced.
+    var copyBtn = document.getElementById("copy-email");
+    var copyLabel = copyBtn.querySelector("span");
+    var copyTimer;
+    copyBtn.addEventListener("click", function () {
+      copyText(EMAIL).then(function () {
+        copyLabel.textContent = "Copied";
+        announce.textContent = EMAIL + " copied to clipboard";
+      }, function () {
+        copyLabel.textContent = "Copy failed";
+        announce.textContent = "Couldn't copy. The address is " + EMAIL;
+      });
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(function () { copyLabel.textContent = "Copy"; announce.textContent = ""; }, 2000);
+    });
+
+    // "Make an offer" opens the offer dialog when <dialog> is supported; otherwise the plain mailto stays.
+    var dialog = document.getElementById("offer-dialog");
+    if (typeof dialog.showModal !== "function") return;
+
+    var form = document.getElementById("offer-form");
+    var amount = document.getElementById("amount");
+    var amountField = document.getElementById("amount-field");
+    var amountHint = document.getElementById("amount-hint");
+    var status = document.getElementById("offer-status");
+    var fmt = new Intl.NumberFormat("en-US");
+
+    document.getElementById("offer").addEventListener("click", function (e) {
+      if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+      e.preventDefault();
+      status.textContent = "";
+      dialog.showModal();
+    });
+    dialog.querySelector("[data-close]").addEventListener("click", function () { dialog.close(); });
+    // A click on the backdrop lands on the <dialog> element itself.
+    dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
+
+    var amountValue = function () { return parseInt(amount.value.replace(/[^\d]/g, ""), 10) || 0; };
+    var setInvalid = function (msg) {
+      amountField.classList.toggle("invalid", !!msg);
+      amount.setAttribute("aria-invalid", msg ? "true" : "false");
+      amountHint.textContent = msg || "";
+    };
+    amount.addEventListener("input", function () { if (amountValue() > 0) setInvalid(""); });
+    amount.addEventListener("blur", function () { var v = amountValue(); if (v) amount.value = fmt.format(v); });
+
+    form.addEventListener("submit", function (e) {
+      e.preventDefault();
+      var v = amountValue();
+      if (!v) { setInvalid("Enter the amount you'd like to offer."); amount.focus(); return; }
+      setInvalid("");
+
+      var price = "$" + fmt.format(v);
+      var name = form.elements.name.value.trim();
+      var company = form.elements.company.value.trim();
+      var note = form.elements.note.value.trim();
+      var subject = "Offer for Clusters.so — " + price;
+      var body = [
+        "Hello,", "",
+        "I'd like to make an offer for Clusters.so.", "",
+        "Offer: " + price + " USD",
+        name ? "Name: " + name : null,
+        company ? "Company: " + company : null,
+        note ? "\n" + note : null,
+        "", name ? "Best,\n" + name : "Best,"
+      ].filter(function (line) { return line !== null; }).join("\n");
+
+      var via = e.submitter && e.submitter.value;
+      if (via === "gmail") {
+        window.open(gmailUrl(subject, body), "_blank", "noopener");
+        status.textContent = "Opened Gmail with your offer drafted.";
+      } else if (via === "copy") {
+        copyText("To: " + EMAIL + "\nSubject: " + subject + "\n\n" + body).then(function () {
+          status.textContent = "Copied. Paste it into an email to " + EMAIL + ".";
+        }, function () {
+          status.textContent = "Couldn't copy. Please email " + EMAIL + ".";
+        });
+      } else {
+        location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
+        status.textContent = "Opening your mail app… Nothing happening? Use Gmail or copy the message.";
+      }
+    });
+  })();
+</script>
+</body>
+</html>

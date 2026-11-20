@@ -310,6 +310,33 @@
     :root:not([data-theme="light"]) .field.invalid .hint { color: #F08A75; }
   }
 
+  .icon-btn {
+    display: inline-grid; place-items: center;
+    width: 44px; height: 44px; margin-left: -.35rem;
+    border: 0; border-radius: 999px; background: none;
+    color: var(--fg-2); cursor: pointer;
+    transition: color .2s ease, background-color .2s ease;
+  }
+  .icon-btn:hover { color: var(--fg); background: color-mix(in srgb, var(--fg) 7%, transparent); }
+  .icon-btn:focus-visible { border-radius: 999px; }
+  .icon-btn svg { width: 16px; height: 16px; }
+  .icon-btn .i-done { display: none; }
+  .icon-btn.done .i-copy { display: none; }
+  .icon-btn.done .i-done { display: block; }
+
+  .hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+  .btn[disabled] { opacity: .6; cursor: progress; transform: none; }
+  .dialog-body.sent { text-align: center; padding: 2rem 1.75rem 1.75rem; }
+  #sent-title:focus { outline: none; }
+  .sent[hidden] { display: none; }
+  .sent-mark {
+    display: grid; place-items: center; width: 3rem; height: 3rem; margin: .5rem auto 1rem;
+    border-radius: 999px; background: var(--accent); color: var(--on-accent);
+  }
+  .sent-mark svg { width: 22px; height: 22px; }
+  .sent h2 { margin: 0 0 .6rem; font: 800 1.6rem/1 var(--display); letter-spacing: .08em; text-transform: uppercase; }
+  .sent p { margin: 0 0 1.5rem; color: var(--fg-2); font-size: .9375rem; }
+
   .send { display: grid; gap: .6rem; margin-top: 1.5rem; }
   .send .btn { width: 100%; }
   .send-alt { display: flex; justify-content: center; align-items: center; gap: .25rem; font-size: .9375rem; color: var(--fg-2); }
@@ -334,12 +361,10 @@
       <a class="btn" id="offer" href="mailto:hello@clusters.so?subject=Offer%20for%20Clusters.so">Make an offer</a>
       <div class="contact">
         <a class="link" href="mailto:hello@clusters.so?subject=Enquiry%20about%20Clusters.so">hello@clusters.so</a>
-        <button class="link" type="button" id="copy-email" data-js-only>
-          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-.5a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h.5"/></svg>
-          <span>Copy</span>
+        <button class="icon-btn" type="button" id="copy-email" aria-label="Copy email address" title="Copy email address" data-js-only>
+          <svg class="i-copy" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5.5" y="5.5" width="8" height="8" rx="1.5"/><path d="M10.5 3.5v-.5a1 1 0 0 0-1-1h-6a1 1 0 0 0-1 1v6a1 1 0 0 0 1 1h.5"/></svg>
+          <svg class="i-done" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"/></svg>
         </button>
-        <span class="sep" aria-hidden="true">·</span>
-        <a class="link" href="https://mail.google.com/mail/?view=cm&amp;fs=1&amp;to=hello@clusters.so&amp;su=Enquiry%20about%20Clusters.so" target="_blank" rel="noopener">Open in Gmail</a>
       </div>
       <p class="sr-only" id="announce" aria-live="polite"></p>
     </div>
@@ -359,48 +384,51 @@
         <svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M4 4l10 10M14 4L4 14"/></svg>
       </button>
     </div>
-    <p class="dialog-lede" id="offer-lede">We'll draft the email for you. Nothing is sent until you press send in your own mail.</p>
+    <p class="dialog-lede" id="offer-lede">Send your offer and we'll get back to you shortly.</p>
 
-    <div class="field" id="amount-field">
-      <label for="amount">Your offer</label>
+    <div class="field">
+      <label for="name">Name</label>
+      <input class="input" id="name" name="name" type="text" autocomplete="name" required maxlength="120" autofocus aria-describedby="name-hint">
+      <p class="hint" id="name-hint"></p>
+    </div>
+    <div class="field">
+      <label for="company">Company name</label>
+      <input class="input" id="company" name="company" type="text" autocomplete="organization" maxlength="160">
+    </div>
+    <div class="field">
+      <label for="email">Email address</label>
+      <input class="input" id="email" name="email" type="email" autocomplete="email" required maxlength="200" aria-describedby="email-hint">
+      <p class="hint" id="email-hint"></p>
+    </div>
+    <div class="field">
+      <label for="amount">Amount <small>(USD)</small></label>
       <div class="money">
-        <input class="input" id="amount" name="amount" type="text" inputmode="numeric" autocomplete="off" required autofocus aria-describedby="amount-hint">
+        <input class="input" id="amount" name="amount" type="text" inputmode="numeric" autocomplete="off" required aria-describedby="amount-hint">
       </div>
       <p class="hint" id="amount-hint"></p>
     </div>
-    <div class="field">
-      <label for="name">Name</label>
-      <input class="input" id="name" name="name" type="text" autocomplete="name">
-    </div>
-    <div class="field">
-      <label for="company">Company <small>(optional)</small></label>
-      <input class="input" id="company" name="company" type="text" autocomplete="organization">
-    </div>
-    <div class="field">
-      <label for="note">Anything else <small>(optional)</small></label>
-      <textarea class="input" id="note" name="note" rows="3" placeholder="Intended use, timeline, questions"></textarea>
+    <div class="hp" aria-hidden="true">
+      <label for="website">Leave this empty</label>
+      <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
     </div>
 
     <div class="send">
-      <button class="btn" type="submit" value="mail">Send from my email</button>
-      <div class="send-alt">
-        <button class="link" type="submit" value="gmail">Use Gmail</button>
-        <span aria-hidden="true">·</span>
-        <button class="link" type="submit" value="copy">Copy message</button>
-      </div>
+      <button class="btn" type="submit" id="send-btn">Send</button>
     </div>
     <p class="status" id="offer-status" aria-live="polite"></p>
   </form>
+  <div class="dialog-body sent" id="offer-sent" hidden>
+    <div class="sent-mark" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3.5 8.5l3 3 6-7"/></svg></div>
+    <h2 id="sent-title" tabindex="-1">Offer received</h2>
+    <p>Thank you. A confirmation is on its way to <strong id="sent-email"></strong>. We'll reply personally soon.</p>
+    <button class="btn" type="button" data-close>Done</button>
+  </div>
 </dialog>
 
 <script>
   (function () {
     var EMAIL = "hello@clusters.so";
     var announce = document.getElementById("announce");
-    var gmailUrl = function (subject, body) {
-      return "https://mail.google.com/mail/?view=cm&fs=1&to=" + encodeURIComponent(EMAIL) +
-        "&su=" + encodeURIComponent(subject) + (body ? "&body=" + encodeURIComponent(body) : "");
-    };
     var copyText = function (text) {
       if (navigator.clipboard && window.isSecureContext) return navigator.clipboard.writeText(text);
       return new Promise(function (resolve, reject) {
@@ -412,87 +440,93 @@
       });
     };
 
-    // Copy the address, with a short "Copied" state that is also announced.
+    // Icon-only copy: swaps to a check for 2s and announces the result.
     var copyBtn = document.getElementById("copy-email");
-    var copyLabel = copyBtn.querySelector("span");
     var copyTimer;
     copyBtn.addEventListener("click", function () {
       copyText(EMAIL).then(function () {
-        copyLabel.textContent = "Copied";
+        copyBtn.classList.add("done");
+        copyBtn.setAttribute("aria-label", "Email address copied");
         announce.textContent = EMAIL + " copied to clipboard";
       }, function () {
-        copyLabel.textContent = "Copy failed";
         announce.textContent = "Couldn't copy. The address is " + EMAIL;
       });
       clearTimeout(copyTimer);
-      copyTimer = setTimeout(function () { copyLabel.textContent = "Copy"; announce.textContent = ""; }, 2000);
+      copyTimer = setTimeout(function () {
+        copyBtn.classList.remove("done");
+        copyBtn.setAttribute("aria-label", "Copy email address");
+        announce.textContent = "";
+      }, 2000);
     });
 
-    // "Make an offer" opens the offer dialog when <dialog> is supported; otherwise the plain mailto stays.
+    // "Make an offer" opens the dialog when <dialog> is supported; otherwise the plain mailto stays.
     var dialog = document.getElementById("offer-dialog");
     if (typeof dialog.showModal !== "function") return;
 
     var form = document.getElementById("offer-form");
-    var amount = document.getElementById("amount");
-    var amountField = document.getElementById("amount-field");
-    var amountHint = document.getElementById("amount-hint");
+    var sent = document.getElementById("offer-sent");
+    var sendBtn = document.getElementById("send-btn");
     var status = document.getElementById("offer-status");
+    var amount = form.elements.amount;
     var fmt = new Intl.NumberFormat("en-US");
 
+    var reset = function () {
+      form.hidden = false; sent.hidden = true; status.textContent = "";
+      sendBtn.disabled = false; sendBtn.textContent = "Send";
+    };
     document.getElementById("offer").addEventListener("click", function (e) {
       if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
       e.preventDefault();
-      status.textContent = "";
+      if (!sent.hidden) { form.reset(); reset(); }
       dialog.showModal();
     });
-    dialog.querySelector("[data-close]").addEventListener("click", function () { dialog.close(); });
-    // A click on the backdrop lands on the <dialog> element itself.
+    dialog.querySelectorAll("[data-close]").forEach(function (b) {
+      b.addEventListener("click", function () { dialog.close(); });
+    });
     dialog.addEventListener("click", function (e) { if (e.target === dialog) dialog.close(); });
 
-    var amountValue = function () { return parseInt(amount.value.replace(/[^\d]/g, ""), 10) || 0; };
-    var setInvalid = function (msg) {
-      amountField.classList.toggle("invalid", !!msg);
-      amount.setAttribute("aria-invalid", msg ? "true" : "false");
-      amountHint.textContent = msg || "";
+    var setInvalid = function (input, msg) {
+      var field = input.closest(".field"), hint = document.getElementById(input.id + "-hint");
+      field.classList.toggle("invalid", !!msg);
+      input.setAttribute("aria-invalid", msg ? "true" : "false");
+      if (hint) hint.textContent = msg || "";
+      return !msg;
     };
-    amount.addEventListener("input", function () { if (amountValue() > 0) setInvalid(""); });
+    var amountValue = function () { return parseInt(amount.value.replace(/[^\d]/g, ""), 10) || 0; };
+    ["name", "email", "amount"].forEach(function (n) {
+      form.elements[n].addEventListener("input", function () { setInvalid(form.elements[n], ""); });
+    });
     amount.addEventListener("blur", function () { var v = amountValue(); if (v) amount.value = fmt.format(v); });
 
     form.addEventListener("submit", function (e) {
       e.preventDefault();
-      var v = amountValue();
-      if (!v) { setInvalid("Enter the amount you'd like to offer."); amount.focus(); return; }
-      setInvalid("");
+      var f = form.elements;
+      var name = f.name.value.trim(), email = f.email.value.trim(), v = amountValue();
+      var ok = [
+        setInvalid(f.name, name ? "" : "Please enter your name."),
+        setInvalid(f.email, /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email) ? "" : "Please enter a valid email address."),
+        setInvalid(amount, v ? "" : "Please enter your offer in USD.")
+      ];
+      var firstBad = [f.name, f.email, amount][ok.indexOf(false)];
+      if (firstBad) { firstBad.focus(); return; }
 
-      var price = "$" + fmt.format(v);
-      var name = form.elements.name.value.trim();
-      var company = form.elements.company.value.trim();
-      var note = form.elements.note.value.trim();
-      var subject = "Offer for Clusters.so — " + price;
-      var body = [
-        "Hello,", "",
-        "I'd like to make an offer for Clusters.so.", "",
-        "Offer: " + price + " USD",
-        name ? "Name: " + name : null,
-        company ? "Company: " + company : null,
-        note ? "\n" + note : null,
-        "", name ? "Best,\n" + name : "Best,"
-      ].filter(function (line) { return line !== null; }).join("\n");
-
-      var via = e.submitter && e.submitter.value;
-      if (via === "gmail") {
-        window.open(gmailUrl(subject, body), "_blank", "noopener");
-        status.textContent = "Opened Gmail with your offer drafted.";
-      } else if (via === "copy") {
-        copyText("To: " + EMAIL + "\nSubject: " + subject + "\n\n" + body).then(function () {
-          status.textContent = "Copied. Paste it into an email to " + EMAIL + ".";
-        }, function () {
-          status.textContent = "Couldn't copy. Please email " + EMAIL + ".";
-        });
-      } else {
-        location.href = "mailto:" + EMAIL + "?subject=" + encodeURIComponent(subject) + "&body=" + encodeURIComponent(body);
-        status.textContent = "Opening your mail app… Nothing happening? Use Gmail or copy the message.";
-      }
+      sendBtn.disabled = true; sendBtn.textContent = "Sending…"; status.textContent = "";
+      fetch("/api/offer", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          name: name, company: f.company.value.trim(), email: email, amount: v, website: f.website.value
+        })
+      }).then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (d) { if (!r.ok) throw new Error(d.error || ""); });
+      }).then(function () {
+        document.getElementById("sent-email").textContent = email;
+        form.hidden = true; sent.hidden = false;
+        document.getElementById("sent-title").focus();
+      }).catch(function (err) {
+        sendBtn.disabled = false; sendBtn.textContent = "Send";
+        status.textContent = (err && err.message) || ("Something went wrong. Please email " + EMAIL + ".");
+      });
     });
   })();
 </script>

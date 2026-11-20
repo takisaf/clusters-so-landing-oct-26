@@ -1,5 +1,5 @@
-// POST /api/offer — receives an offer from the dialog, emails it to the owner,
-// and sends the buyer an automatic confirmation. Uses Resend's HTTP API (no dependencies).
+// POST /api/offer — receives an offer from the dialog and emails it to the owner.
+// No confirmation is sent to the buyer (handled by the owner's own email automation). Uses Resend's HTTP API (no dependencies).
 //
 // Vercel environment variables:
 //   RESEND_API_KEY   required — from resend.com, with clusters.so verified as a sending domain
@@ -50,7 +50,7 @@ export default async function handler(req, res) {
   const rows = [["Name", name], ["Company", company || "—"], ["Email", email], ["Offer", price]];
 
   try {
-    // 1. The offer, to the owner. Reply-To is the buyer, so replying goes straight to them.
+    // The offer, to the owner. Reply-To is the buyer, so replying goes straight to them.
     await send({
       from: FROM,
       to: [TO],
@@ -62,36 +62,6 @@ export default async function handler(req, res) {
         .map(([k, v]) => `<tr><td style="padding:6px 16px 6px 0;color:#676C68">${k}</td><td style="padding:6px 0"><strong>${esc(v)}</strong></td></tr>`)
         .join("")}</table>`,
     });
-
-    // 2. Automatic confirmation, to the buyer. Failure here shouldn't fail the offer.
-    try {
-      await send({
-        from: FROM,
-        to: [email],
-        reply_to: TO,
-        subject: "We've received your offer for Clusters.so",
-        text: `Hi ${name},
-
-Thank you for your offer of ${price} for Clusters.so. This is an automatic confirmation that it reached us.
-
-We review every offer personally and will get back to you soon.
-
-Your offer
-Name: ${name}
-Company: ${company || "—"}
-Amount: ${price}
-
-Clusters.so`,
-        html: `<div style="font-family:Arial,sans-serif;font-size:15px;line-height:1.55;color:#232624">
-<p>Hi ${esc(name)},</p>
-<p>Thank you for your offer of <strong>${esc(price)}</strong> for Clusters.so. This is an automatic confirmation that it reached us.</p>
-<p>We review every offer personally and will get back to you soon.</p>
-<p style="color:#676C68;font-size:13px;margin-top:24px">Your offer<br>Name: ${esc(name)}<br>Company: ${esc(company || "—")}<br>Amount: ${esc(price)}</p>
-<p style="margin-top:24px"><strong>Clusters.so</strong></p></div>`,
-      });
-    } catch (e) {
-      console.error("Confirmation email failed:", e);
-    }
 
     return res.status(200).json({ ok: true });
   } catch (e) {

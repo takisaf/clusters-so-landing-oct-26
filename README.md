@@ -25,8 +25,8 @@ Import the repo in Vercel (framework preset: Other, no build command, output dir
 ## Offers form
 
 "Make an offer" opens a dialog (name, company, email, amount in USD). It posts to `api/offer.js`, a Vercel
-serverless function that emails the offer to **asaf@clusters.so** (Reply-To set to the buyer) and sends the buyer an
-automatic confirmation. Email goes through [Resend](https://resend.com).
+serverless function that emails the offer to **asaf@clusters.so** (Reply-To set to the buyer). No confirmation is sent to the
+buyer from here; that is handled by the email automation on asaf@clusters.so. Email goes through [Resend](https://resend.com).
 
 One-time setup:
 
